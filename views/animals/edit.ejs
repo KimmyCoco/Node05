@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Animal</title>
+</head>
+<body>
+    <h1>Edit Animal</h1>
+    <form action="/animals/<%=animal._id%>?_method=PUT" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Animal name" value="<%=animal.name%>"/>
+        <br/><br/>
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" placeholder="Age" value="<%=animal.age%>"/>
+        <br/><br/>
+        <label for="breed">Name</label>
+        <input type="text" name="breed" id="breed" placeholder="Animal breed" value="<%=animal.breed%>"/>
+        <br/><br/>
+        <select name="category" id="category">
+            <% for(let category of categories){ %>
+                <option value="<%=category %>" <%=animal.category === category ? 'selected': '' %> ><%=category %></option>
+            <% } %>
+        </select>
+        <br/><br/>
+        <button>Submit</button>
+    </form>
+    <a href="/animals/<%=animal._id%>">Cancel</a>
+</body>
+</html>

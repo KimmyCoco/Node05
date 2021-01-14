@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Animal</title>
+</head>
+<body>
+    <h1>Add an Animal</h1>
+    <form action="/animals" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Animal name"/>
+        <br/><br/>
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" placeholder="Age"/>
+        <br/><br/>
+        <label for="breed">Name</label>
+        <input type="text" name="breed" id="breed" placeholder="Animal breed"/>
+        <br/><br/>
+        <select name="category" id="category">
+            <% for(let category of categories){ %>
+                <option value="<%=category %>"><%=category %></option>
+            <% } %>
+        </select>
+        <br/><br/>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
