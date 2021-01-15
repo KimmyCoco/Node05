@@ -40,7 +40,7 @@ exports.updateAnimalView = async(req,res) => {
 exports.updateAnimal = async(req,res) => {
     const { id } = req.params;
     const animal = await Animal
-        .findByIdAndUpdate(id, req.body, { runValidators: true, useFindAndModify: false, new: true });
+        .findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
     res.redirect(`/animals/${animal._id}`);
 }
 
