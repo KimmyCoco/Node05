@@ -1,3 +1,8 @@
+/* ============================================
+Stand alone file to be executed to populate the 
+database with the given const data (insertMany)
+============================================ */
+
 const mongoose = require("mongoose");
 
 mongoose
@@ -20,39 +25,39 @@ const dogSchema = new mongoose.Schema({
 
 const Dog = mongoose.model("Dog", dogSchema);
 
-//insertOne
+
+//==============insertOne=============
 // const beefer = new Dog({
 //     name: 'Beefer',
 //     age: 3,
 //     breed: 'Pitbull'
 // });
-
 // beefer.save();
 
-//insertMany
-// Dog.insertMany([
-//   {
-//     name: "Buddy",
-//     age: 10,
-//     breed: "beagle",
-//   },
-//   {
-//     name: "Munchkin",
-//     age: 2,
-//     breed: "Corgi",
-//   },
-//   {
-//     name: "Muffin",
-//     age: 1,
-//     breed: "Maltese",
-//   },
-// ]).then(res => {
-//     console.log(res);
-// }).catch(err => {
-//     console.log(err);
-// })
+//==============insertMany=============
+Dog.insertMany([
+  {
+    name: "Buddy",
+    age: 10,
+    breed: "beagle",
+  },
+  {
+    name: "Munchkin",
+    age: 2,
+    breed: "Corgi",
+  },
+  {
+    name: "Muffin",
+    age: 1,
+    breed: "Maltese",
+  },
+]).then(res => {
+    console.log(res);
+}).catch(err => {
+    console.log(err);
+})
 
-//Delete All
+//==============deleteMany=============
 // Dog.deleteMany().then(res => {
 //         console.log(res);
 //     }).catch(err => {

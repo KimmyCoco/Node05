@@ -3,6 +3,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
+const AppError = require('./util/AppError');
+
 const app = express();
 
 //import the routes
@@ -21,6 +23,23 @@ app.use(methodOverride('_method'));
 
 //routes
 app.use('/animals', animalRoute);
+
+const handleValidationErr = err => {
+  // console.dir(err);
+  return new AppError(`Validation Failed... ${err.message}`, 400);
+}
+
+//for single out the particular Mongoose Error type
+app.use((err, req, res, next) => {
+  if(err.name === 'ValidationError') err = handleValidationErr(err)
+  next(err);
+});
+
+//catch all error middleware
+app.use((err, req, res, next) => {
+  const { status = 500, message = 'Something went wrong'} = err;
+  res.status(status).send(message);
+});
 
 //connect to db and express
 mongoose

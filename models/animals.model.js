@@ -8,7 +8,7 @@ const animalSchema = new mongoose.Schema({
     age: {
         type: Number,
         required: true,
-        min: 0
+        min: [0, 'Was he/she really born negatively?']
     },
     breed: {
         type: String,
