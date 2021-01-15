@@ -26,10 +26,11 @@ app.use('/animals', animalRoute);
 
 const handleValidationErr = err => {
   // console.dir(err);
+  //In a real app, we would do a lot more here...
   return new AppError(`Validation Failed... ${err.message}`, 400);
 }
 
-//for single out the particular Mongoose Error type
+//single out the particular Mongoose Error type
 app.use((err, req, res, next) => {
   if(err.name === 'ValidationError') err = handleValidationErr(err)
   next(err);
